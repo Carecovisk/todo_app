@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow">
+          <div class="card-header text-center bg-danger text-white">
+            <h5>Confirmar Exclusão</h5>
+          </div>
+          <div class="card-body text-center">
+            <p>
+              Você realmente deseja excluir a tarefa <strong>"{{ object.titulo }}"</strong>?
+            </p>
+            <form action="{% url "deletar-tarefas" object.pk %}" method="post">
+               {% csrf_token %}
+              <button type="submit" class="btn btn-danger me-2">Sim, excluir</button>
+              <a href="{% url "listar-tarefas" %}" class="btn btn-secondary">Cancelar</a>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

@@ -1,17 +1,23 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
   <div class="container-fluid mt-5">
-    <div class="row g-4 justify-content-center ">
+    <div class="row g-4 justify-content-center">
       {% for tarefa in tarefas %}
-        <div class="col-6 col-sm-4 col-md-3 col-lg-2  card pt-2 mx-2 text-bg-secondary">
-          <img class="card-img-bottom card-img-top" src="{% url "carregar_imagem" tarefa.nome_foto %}" alt="{{ descricao }}" />
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 card pt-2 mx-2 text-bg-secondary">
+          {% if tarefa.foto %}
+            <img class="card-img-bottom card-img-top" src="{% url 'carregar_imagem' tarefa.nome_foto %}" alt="{{ descricao }}" />
+          {% endif %}
 
           <div class="card-body">
             <h5 class="card-title">{{ tarefa.titulo }}</h5>
             <p class="card-text">{{ tarefa.descricao }}</p>
-            <a href="#" class="btn btn-primary mt-auto position-relative">Go somewhere</a>
+
+          </div>
+          <div class="d-flex mb-3 justify-content-around">
+            <a href="{% url "deletar-tarefas" tarefa.id %}" class="btn btn-danger">Deletar</a>
+            <a href="{% url "editar-tarefas" tarefa.id %}" class="btn btn-warning">Editar</a>
+            <a href="{% url "ver-tarefas" tarefa.id %}" class="btn btn-info">Ver</a>
           </div>
         </div>
       {% endfor %}

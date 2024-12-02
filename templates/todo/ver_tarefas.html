@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block content %}
+  <div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-5">
+        <div class="card shadow">
+          <img src="{% url 'carregar_imagem' tarefa.nome_foto %}" class="card-img-bottom card-img-top" alt="Imagem da Tarefa" />
+          <div class="card-body">
+            <h3 class="card-title text-center">{{ tarefa.titulo }}</h3>
+            <p class="card-text">
+              <strong>Descrição:</strong> {{ tarefa.descricao }}
+            </p>
+            <form action="{% url 'ver-tarefas' tarefa.id %}" method="post" class="text-center">
+              <!-- Inclua CSRF Token aqui se for um projeto Django -->
+              {% csrf_token %}
+              <a href="{% url 'listar-tarefas' %}" class="btn btn-dark">Voltar</a>
+
+              {% if isFeita %}
+                <button type="submit" class="btn btn-danger">Marcar como não feita</button>
+              {% else %}
+                <button type="submit" class="btn btn-secondary">Marcar como feita </button>
+              {% endif %}
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}

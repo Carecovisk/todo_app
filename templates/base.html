@@ -10,12 +10,12 @@
 <body>
     <nav class="navbar navbar-expand {% block nav-color %}bg-primary{% endblock nav-color %} shadow">
         <div class="container-xxl">
-          <a href="#intro" class="navbar-brand"><span class="fw-bold text-light">Chrono - O único sistema que você precisa</span></a>
+          <a href="{% url "listar-tarefas" %}" class="navbar-brand"><span class="fw-bold text-light">Chrono - O único sistema que você precisa</span></a>
 
           <ul class="ms-auto navbar-nav fs-5">
-            <li class="nav-item"><a href="" class="nav-link text-light">Início</a></li>
-            <li class="nav-item"><a href="" class="nav-link text-light">Nova tarefa</a></li>
-            <li class="nav-item"><a href="" class="nav-link text-light">Sair</a></li>
+            <li class="nav-item"><a href="{% url "listar-tarefas" %}" class="nav-link text-light">Início</a></li>
+            <li class="nav-item"><a href="{% url "criar-tarefas" %}" class="nav-link text-light">Nova tarefa</a></li>
+            <li class="nav-item"><a href="{% url "logout" %}" class="nav-link text-light">Sair</a></li>
           </ul>
         </div>
       </nav>
