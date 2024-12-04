@@ -8,6 +8,7 @@ class Tarefa(models.Model):
     descricao = models.CharField(max_length=512)
     foto = models.ImageField(blank=True, null=True, upload_to='images')
     feito = models.BooleanField(default=False)
+    
 
     def nome_foto(self):
         return os.path.basename(self.foto.url)

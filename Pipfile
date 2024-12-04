@@ -9,6 +9,8 @@ djangorestframework = "*"
 requests = "*"
 pillow = "*"
 psycopg2-binary = "*"
+django-cors-headers = "*"
+drf-extra-fields = "*"
 
 [dev-packages]
 

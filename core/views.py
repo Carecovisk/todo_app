@@ -6,7 +6,10 @@ from core.forms import FormularioTarefa
 from django.http import FileResponse, Http404
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
-import requests
+from rest_framework.generics import ListAPIView, DestroyAPIView, CreateAPIView, UpdateAPIView
+from core.serializers import SerializadorTarefas
+from rest_framework import permissions
+from rest_framework.authentication import TokenAuthentication
 
 # Create your views here.
 
@@ -47,6 +50,38 @@ class VerTarefa(LoginRequiredMixin, View):
         isFeita = tarefa.feito
         return render(request, 'todo/ver_tarefas.html', {'tarefa': tarefa, 'isFeita': isFeita})
 
+
+class APIListarTarefas(ListAPIView):
+    serializer_class = SerializadorTarefas
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Tarefa.objects.all()
+
+class APIDeleteTarefas(DestroyAPIView):
+    serializer_class = SerializadorTarefas
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Tarefa.objects.all()
+
+class APICriarTarefas(CreateAPIView):
+    serializer_class = SerializadorTarefas
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Tarefa.objects.all()
+
+class APIEditarTarefas(UpdateAPIView):
+    serializer_class = SerializadorTarefas
+    authentication_classes = [TokenAuthentication]
+    permission_classes = [permissions.IsAuthenticated]
+
+    def get_queryset(self):
+        return Tarefa.objects.all()
 
 
 def getAppImages(request, arquivo):

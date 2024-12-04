@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{% static "bootstrap.css" %}">
     <title>ChronoTasks</title>
 </head>
-<body>
+<body >
     <nav class="navbar navbar-expand {% block nav-color %}bg-primary{% endblock nav-color %} shadow">
         <div class="container-xxl">
           <a href="{% url "listar-tarefas" %}" class="navbar-brand"><span class="fw-bold text-light">Chrono - O único sistema que você precisa</span></a>
@@ -22,7 +22,6 @@
     <!-- Header-->
 
     {% block content %}
-        Sexo muito forte.
     {% endblock content %}
     
     <script src="{% static "bootstrap.js" %}">
