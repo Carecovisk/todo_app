@@ -1,5 +1,6 @@
 from django.urls import path
 from core import views
+
 urlpatterns = [
     path('', views.ListarTarefas.as_view(), name='listar-tarefas'),
     path('images/<str:arquivo>/', views.getAppImages, name='carregar_imagem'),
@@ -13,3 +14,6 @@ urlpatterns = [
     path('api/deletar/<int:pk>/', views.APIDeleteTarefas.as_view()),
     path('api/editar/<int:pk>/', views.APIEditarTarefas.as_view()),
 ]
+
+
+
